@@ -50,12 +50,12 @@ function App() {
           element={
             <CompositionDetail
               heroImg={
-                active !== null && active >= 0
+                active !== null
                   ? require(`${fetchedData[active].images.thumbnail}`)
                   : null
               }
               artistImg={
-                active !== null && active >= 0
+                active !== null
                   ? require(`${fetchedData[active].artist.image}`)
                   : null
               }
