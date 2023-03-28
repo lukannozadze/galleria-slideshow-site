@@ -1,5 +1,4 @@
 const CompositionWindow = (props) => {
-  //console.log(props.imgPath);
   return (
     <div className="relative">
       <img src={props.imgPath} alt="composition" />
