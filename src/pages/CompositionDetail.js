@@ -7,13 +7,11 @@ const CompositionDetail = (props) => {
   return (
     <div>
       <CompositionVisual
-        path={props.path}
         heroImg={props.heroImg !== "" ? props.heroImg : null}
         active={props.active}
         setActive={props.setActive}
       />
       <Description
-        path={props.path}
         artistImg={props.artistImg !== "" ? props.artistImg : null}
         active={props.active}
         setActive={props.setActive}

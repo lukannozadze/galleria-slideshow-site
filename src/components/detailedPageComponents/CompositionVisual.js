@@ -4,7 +4,7 @@ const CompositionVisual = (props) => {
   console.log(fetchData);
   console.log(props.setActive);
   return (
-    <div className="flex flex-col items-center">
+    <div key={props.path} className="flex flex-col items-center">
       <div>
         <div className="relative">
           <img src={props.heroImg} alt="composition" />
@@ -21,7 +21,7 @@ const CompositionVisual = (props) => {
               {fetchData[props.active].artist.name}
             </h1>
             <span className="text-[14px] leading-[19px] text-[#7D7D7D]">
-              {fetchData[props.active].artist.name}s
+              {fetchData[props.active].artist.name}
             </span>
           </div>
         </div>

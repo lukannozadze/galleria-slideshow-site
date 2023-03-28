@@ -1,11 +1,13 @@
 import fetchData from "../../data.json";
 const SliderPlayer = (props) => {
+  const maxSize = Object.keys(fetchData).length;
+  console.log(props.active);
   return (
     <div>
       <progress
         className="h-[1px] w-screen bg-red-500"
         value={props.active + 1}
-        max="15"
+        max={maxSize}
       >
         {" "}
       </progress>
@@ -19,7 +21,14 @@ const SliderPlayer = (props) => {
           </span>
         </div>
         <div className="flex gap-6">
-          <button>
+          <button
+            onClick={() => {
+              if (props.active > 0) {
+                console.log("test");
+                props.setActive((prevState) => prevState - 1);
+              }
+            }}
+          >
             <svg width="26" height="24" xmlns="http://www.w3.org/2000/svg">
               <g stroke="#000" fill="none" fillRule="evenodd">
                 <path
@@ -30,7 +39,13 @@ const SliderPlayer = (props) => {
               </g>
             </svg>
           </button>
-          <button>
+          <button
+            onClick={() => {
+              if (props.active > maxSize) {
+                props.setActive((prevState) => prevState + 1);
+              }
+            }}
+          >
             <svg width="26" height="24" xmlns="http://www.w3.org/2000/svg">
               <g stroke="#000" fill="none" fillRule="evenodd">
                 <path

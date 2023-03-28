@@ -6,12 +6,11 @@ import CompositionDetail from "./pages/CompositionDetail";
 import { useState } from "react";
 function App() {
   const [path, setPath] = useState("");
-  const [heroImg, setHeroImg] = useState("");
   const [artistImg, setArtistImg] = useState("");
   const [active, setActive] = useState(null);
   //console.log(fetchedData[0].name);
   console.log(active);
-  console.log(path);
+  console.log(fetchedData);
   return (
     <div className="font-baskervile">
       <Header />
@@ -29,11 +28,9 @@ function App() {
                     >
                       <div
                         onClick={() => {
+                          setActive(index);
                           console.log(fetchedData[index].name);
                           setPath(fetchedData[index].name);
-                          setHeroImg(require(`${element.images.thumbnail}`));
-                          setArtistImg(require(`${element.artist.image}`));
-                          setActive(index);
                         }}
                       >
                         <CompositionWindow
@@ -52,9 +49,16 @@ function App() {
           path={`${path}`}
           element={
             <CompositionDetail
-              path={path}
-              heroImg={heroImg}
-              artistImg={artistImg}
+              heroImg={
+                active !== null && active >= 0
+                  ? require(`${fetchedData[active].images.thumbnail}`)
+                  : null
+              }
+              artistImg={
+                active !== null && active >= 0
+                  ? require(`${fetchedData[active].artist.image}`)
+                  : null
+              }
               active={active}
               setActive={setActive}
             />
