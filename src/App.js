@@ -6,42 +6,40 @@ import CompositionDetail from "./pages/CompositionDetail";
 import { useState } from "react";
 function App() {
   const [path, setPath] = useState("");
-  const [artistImg, setArtistImg] = useState("");
   const [active, setActive] = useState(null);
-  //console.log(fetchedData[0].name);
-  console.log(active);
-  console.log(fetchedData);
   return (
     <div className="font-baskervile">
-      <Header />
       <Routes>
         <Route
           path="/"
           element={
-            <div className="flex flex-col items-center gap-6">
-              {fetchedData &&
-                fetchedData.map((element, index) => {
-                  return (
-                    <Link
-                      key={element.images.thumbnail}
-                      to={`/${fetchedData[index].name}`}
-                    >
-                      <div
-                        onClick={() => {
-                          setActive(index);
-                          console.log(fetchedData[index].name);
-                          setPath(fetchedData[index].name);
-                        }}
+            <div>
+              <Header />
+              <div className="flex flex-col items-center gap-6">
+                {fetchedData &&
+                  fetchedData.map((element, index) => {
+                    return (
+                      <Link
+                        key={element.images.thumbnail}
+                        to={`/${fetchedData[index].name}`}
                       >
-                        <CompositionWindow
-                          imgPath={require(`${element.images.thumbnail}`)}
-                          title={element.name}
-                          author={element.artist.name}
-                        />
-                      </div>
-                    </Link>
-                  );
-                })}
+                        <div
+                          onClick={() => {
+                            setActive(index);
+                            console.log(fetchedData[index].name);
+                            setPath(fetchedData[index].name);
+                          }}
+                        >
+                          <CompositionWindow
+                            imgPath={require(`${element.images.thumbnail}`)}
+                            title={element.name}
+                            author={element.artist.name}
+                          />
+                        </div>
+                      </Link>
+                    );
+                  })}
+              </div>
             </div>
           }
         ></Route>
@@ -51,7 +49,7 @@ function App() {
             <CompositionDetail
               heroImg={
                 active !== null
-                  ? require(`${fetchedData[active].images.thumbnail}`)
+                  ? require(`${fetchedData[active].images.hero.small}`)
                   : null
               }
               artistImg={
@@ -61,6 +59,11 @@ function App() {
               }
               active={active}
               setActive={setActive}
+              heroLarge={
+                active !== null
+                  ? require(`${fetchedData[active].images.hero.large}`)
+                  : null
+              }
             />
           }
         ></Route>

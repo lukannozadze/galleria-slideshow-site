@@ -1,8 +1,8 @@
 import fetchData from "../../data.json";
 const Description = (props) => {
   return (
-    <div className="pt-[52px] pl-6 pr-6 text-left mb-[67px]">
-      <div className="relative">
+    <div className="pt-[46px] pl-6 pr-6 text-left pb-[67px]">
+      <div className="relative ">
         <img
           width="64px"
           height="64px"

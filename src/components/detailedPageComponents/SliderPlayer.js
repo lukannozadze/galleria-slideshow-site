@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import fetchData from "../../data.json";
+
 const SliderPlayer = (props) => {
+  const navigate = useNavigate();
   const maxSize = Object.keys(fetchData).length;
-  console.log(props.active);
   return (
     <div>
       <progress
-        className="h-[1px] w-screen bg-red-500"
+        className="h-[1px] w-screen "
         value={props.active + 1}
         max={maxSize}
       >
@@ -26,6 +28,8 @@ const SliderPlayer = (props) => {
               if (props.active > 0) {
                 console.log("test");
                 props.setActive((prevState) => prevState - 1);
+              } else {
+                navigate("/");
               }
             }}
           >
@@ -41,7 +45,7 @@ const SliderPlayer = (props) => {
           </button>
           <button
             onClick={() => {
-              if (props.active > maxSize) {
+              if (props.active < maxSize) {
                 props.setActive((prevState) => prevState + 1);
               }
             }}
