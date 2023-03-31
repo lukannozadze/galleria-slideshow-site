@@ -6,39 +6,52 @@ import { useState } from "react";
 
 const CompositionDetail = (props) => {
   const [modalIsShown, setModalIsShown] = useState(false);
-  console.log(modalIsShown);
+  const [isEnabled, setIsEnabled] = useState(false);
+
   return (
     <div className="relative ">
-      {modalIsShown && (
-        <div
-          onClick={() => setModalIsShown(false)}
-          className="w-screen h-[100%] bg-black absolute bg-opacity-[85%] z-10 "
-        >
-          <div className="absolute left-6 right-6 top-[109px] text-right">
-            <button className="uppercase font-bold text-[14px] leading-[18px] trackig-[3px] text-white -translate-y-[33px] ">
-              close
-            </button>
-            <img
-              src={props.heroLarge !== "" ? props.heroLarge : null}
-              alt="hero"
-            />
-          </div>
-        </div>
-      )}
-      <Header />
       <div>
-        <CompositionVisual
-          heroImg={props.heroImg !== "" ? props.heroImg : null}
-          active={props.active}
+        {modalIsShown && (
+          <div
+            onClick={() => setModalIsShown(false)}
+            className="w-screen h-[100%] bg-black absolute bg-opacity-[85%] z-10 "
+          >
+            <div className="absolute left-6 right-6 top-[109px] text-right">
+              <button className="uppercase font-bold text-[14px] leading-[18px] tracking-[3px] text-white -translate-y-[33px] ">
+                close
+              </button>
+              <img
+                src={props.heroLarge !== "" ? props.heroLarge : null}
+                alt="hero"
+              />
+            </div>
+          </div>
+        )}
+        <Header
+          setIsEnabled={setIsEnabled}
           setActive={props.setActive}
-          setModalIsShown={setModalIsShown}
-        />
-        <Description
-          artistImg={props.artistImg !== "" ? props.artistImg : null}
           active={props.active}
-          setActive={props.setActive}
         />
-        <SliderPlayer active={props.active} setActive={props.setActive} />
+        <div>
+          <CompositionVisual
+            heroImg={props.heroImg !== "" ? props.heroImg : null}
+            active={props.active}
+            setActive={props.setActive}
+            setModalIsShown={setModalIsShown}
+          />
+
+          <Description
+            artistImg={props.artistImg !== "" ? props.artistImg : null}
+            active={props.active}
+            setActive={props.setActive}
+          />
+
+          <SliderPlayer
+            active={props.active}
+            setActive={props.setActive}
+            isEnabled={isEnabled}
+          />
+        </div>
       </div>
     </div>
   );

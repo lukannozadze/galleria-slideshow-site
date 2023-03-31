@@ -1,8 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import fetchData from "../../data.json";
-
 const SliderPlayer = (props) => {
-  const navigate = useNavigate();
   const maxSize = Object.keys(fetchData).length;
   return (
     <div>
@@ -25,16 +22,17 @@ const SliderPlayer = (props) => {
         <div className="flex gap-6">
           <button
             onClick={() => {
-              if (props.active > 0) {
-                console.log("test");
+              if (props.active > 0 && props.isEnabled) {
                 props.setActive((prevState) => prevState - 1);
-              } else {
-                navigate("/");
               }
             }}
           >
             <svg width="26" height="24" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#000" fill="none" fillRule="evenodd">
+              <g
+                stroke={props.isEnabled ? `#000` : "#7D7D7D"}
+                fill="none"
+                fillRule="evenodd"
+              >
                 <path
                   d="M24.166 1.843L3.627 12.113l20.539 10.269V1.843z"
                   strokeWidth="2"
@@ -45,13 +43,21 @@ const SliderPlayer = (props) => {
           </button>
           <button
             onClick={() => {
-              if (props.active < maxSize) {
+              if (props.active < maxSize - 1 && props.isEnabled) {
                 props.setActive((prevState) => prevState + 1);
               }
             }}
           >
             <svg width="26" height="24" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#000" fill="none" fillRule="evenodd">
+              <g
+                stroke={
+                  !props.isEnabled || props.active === maxSize - 1
+                    ? `#7D7D7D`
+                    : "#000"
+                }
+                fill="none"
+                fillRule="evenodd"
+              >
                 <path
                   d="M1.528 1.843l20.538 10.27L1.528 22.382V1.843z"
                   strokeWidth="2"
