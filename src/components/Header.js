@@ -12,13 +12,11 @@ const Header = (props) => {
         />
         <span
           onClick={() => {
-            if (props.active || props.active === 0) {
-              props.setIsEnabled(true);
-            }
+            props.setIsEnabled(!props.isEnabled);
           }}
           className="text-[9px] text-[#7D7D7D] font-baskervile font-bold leading-[11px] tracking-[1.93px] uppercase"
         >
-          start slideshow
+          {`${props.isEnabled ? "stop" : "start"} slideshow`}
         </span>
       </div>
       <Wrapper />

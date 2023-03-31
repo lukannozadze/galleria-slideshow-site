@@ -10,12 +10,11 @@ const CompositionVisual = (props) => {
             onClick={() => {
               props.setModalIsShown(true);
             }}
-            className="bg-black opacity-75 w-[152px] tracking-[2.14px] leading-[12px]  flex gap-[14px] items-center p-4 absolute top-4 left-[40px]  "
+            className="bg-black opacity-75 w-[152px] tracking-[2.14px] leading-[12px]  flex gap-[14px] items-center  p-4 absolute top-4 left-[40px]  "
           >
-            <button>
-              <img src={icon} alt="icon" />
-            </button>
-            <span className="text-white   text-[10px] uppercase ">
+            <img src={icon} alt="icon" />
+
+            <span className="text-white   text-[10px] uppercase pt-1 ">
               view image
             </span>
           </div>

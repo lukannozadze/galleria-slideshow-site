@@ -7,7 +7,6 @@ import { useState } from "react";
 const CompositionDetail = (props) => {
   const [modalIsShown, setModalIsShown] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
-
   return (
     <div className="relative ">
       <div>
@@ -28,7 +27,8 @@ const CompositionDetail = (props) => {
           </div>
         )}
         <Header
-          setIsEnabled={setIsEnabled}
+          setIsEnabled={props.setIsEnabled}
+          isEnabled={props.isEnabled}
           setActive={props.setActive}
           active={props.active}
         />
@@ -49,7 +49,7 @@ const CompositionDetail = (props) => {
           <SliderPlayer
             active={props.active}
             setActive={props.setActive}
-            isEnabled={isEnabled}
+            isEnabled={props.isEnabled}
           />
         </div>
       </div>

@@ -29,7 +29,9 @@ const SliderPlayer = (props) => {
           >
             <svg width="26" height="24" xmlns="http://www.w3.org/2000/svg">
               <g
-                stroke={props.isEnabled ? `#000` : "#7D7D7D"}
+                stroke={
+                  !props.isEnabled || props.active === 0 ? `#7D7D7D` : "#000"
+                }
                 fill="none"
                 fillRule="evenodd"
               >

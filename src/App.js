@@ -6,14 +6,17 @@ import { useState } from "react";
 function App() {
   const [active, setActive] = useState(null);
   const [slideshowStarted, setSlideshowStarted] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
   return (
-    <div className="font-baskervile h-max">
+    <div className="font-baskervile h-max pb-6">
       {!active && active !== 0 ? (
         <div>
           <div>
             <Header
               setSlideshowStarted={setSlideshowStarted}
               setActive={setActive}
+              isEnabled={isEnabled}
+              setIsEnabled={setIsEnabled}
             />
             <div className="flex flex-col items-center gap-6">
               {fetchedData &&
@@ -57,6 +60,8 @@ function App() {
           setActive={setActive}
           setSlideshowStarted={setSlideshowStarted}
           slideshowStarted={slideshowStarted}
+          isEnabled={isEnabled}
+          setIsEnabled={setIsEnabled}
         />
       )}
     </div>
