@@ -4,7 +4,7 @@ import Wrapper from "./Wrapper";
 const Header = (props) => {
   return (
     <div>
-      <div className="flex items-center justify-between p-6">
+      <div className="flex items-center justify-between p-6 md:px-[40px] xl:px-[100px] customXXL:px-[250px]">
         <img
           onClick={() => props.setActive(null)}
           src={galleriaPath}
@@ -14,7 +14,7 @@ const Header = (props) => {
           onClick={() => {
             props.setIsEnabled(!props.isEnabled);
           }}
-          className="text-[9px] text-[#7D7D7D] font-baskervile font-bold leading-[11px] tracking-[1.93px] uppercase"
+          className="text-[9px] text-[#7D7D7D] font-baskervile font-bold leading-[11px] tracking-[1.93px] uppercase md:text-[12px] md:leading-[15px] md:tracking-[2.57px] "
         >
           {`${props.isEnabled ? "stop" : "start"} slideshow`}
         </span>

@@ -8,7 +8,7 @@ function App() {
   const [slideshowStarted, setSlideshowStarted] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
   return (
-    <div className="font-baskervile h-max pb-6">
+    <div className="font-baskervile h-max pb-6 ">
       {!active && active !== 0 ? (
         <div>
           <div>
@@ -18,7 +18,7 @@ function App() {
               isEnabled={isEnabled}
               setIsEnabled={setIsEnabled}
             />
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-center  gap-6 md:flex-wrap md:h-[2770px] md:px-[40px] xl:h-[1960px] xl:px-[100px] custom2XL:h-[1450px] customXXL:px-[250px] ">
               {fetchedData &&
                 fetchedData.map((element, index) => {
                   return (
