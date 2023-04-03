@@ -8,7 +8,7 @@ function App() {
   const [slideshowStarted, setSlideshowStarted] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
   return (
-    <div className="font-baskervile h-max pb-6 ">
+    <div className="font-baskervile h-max  ">
       {!active && active !== 0 ? (
         <div>
           <div>
@@ -54,6 +54,11 @@ function App() {
           heroLarge={
             active !== null
               ? require(`${fetchedData[active].images.hero.large}`)
+              : null
+          }
+          gallery={
+            active !== null
+              ? require(`${fetchedData[active].images.gallery}`)
               : null
           }
           active={active}
